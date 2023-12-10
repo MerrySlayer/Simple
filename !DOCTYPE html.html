@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Limitless Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        #chat-container {
+            max-width: 600px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        #messages {
+            overflow-y: scroll;
+            max-height: 300px;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        #input-container {
+            display: flex;
+        }
+
+        #message-input {
+            flex: 1;
+            padding: 10px;
+        }
+
+        #send-button {
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="messages"></div>
+        <div id="input-container">
+            <input type="text" id="message-input" placeholder="Type your message...">
+            <button id="send-button" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const messageInput = document.getElementById('message-input');
+            const messagesContainer = document.getElementById('messages');
+
+            const message = messageInput.value;
+
+            if (message.trim() !== '') {
+                const messageElement = document.createElement('div');
+                messageElement.textContent = message;
+                messagesContainer.appendChild(messageElement);
+
+                // Clear the input field
+                messageInput.value = '';
+
+                // Scroll to the bottom to show the latest message
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>
